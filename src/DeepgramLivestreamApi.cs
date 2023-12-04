@@ -44,8 +44,8 @@ namespace DeepgramSharp
         public ClientWebSocket WebSocket { get; init; }
         public WebSocketState State => WebSocket.State;
 
-        private readonly byte[] _buffer = new byte[1024 * 8]; // 8KB
         private readonly SemaphoreSlim _semaphore = new(1, 1);
+        private byte[] _buffer = new byte[512];
         private DateTimeOffset _lastKeepAlive = DateTimeOffset.Now;
         private bool _isDisposed;
 
@@ -97,24 +97,32 @@ namespace DeepgramSharp
             await _semaphore.WaitAsync(cancellationToken);
             try
             {
-                WebSocketReceiveResult buffer = await WebSocket.ReceiveAsync(_buffer, cancellationToken);
-                if (buffer.MessageType == WebSocketMessageType.Close)
+                // Clear the buffer
+                Array.Clear(_buffer, 0, _buffer.Length);
+                ValueWebSocketReceiveResult result = await WebSocket.ReceiveAsync(_buffer.AsMemory(), cancellationToken);
+                if (result.MessageType == WebSocketMessageType.Close)
                 {
                     return null;
                 }
-                else if (buffer.MessageType != WebSocketMessageType.Text)
+                else if (result.MessageType != WebSocketMessageType.Text)
                 {
                     throw new InvalidOperationException("WebSocket received unexpected message type.");
                 }
 
-                try
+                int bytesRead = result.Count;
+                while (!result.EndOfMessage)
                 {
-                    return JsonSerializer.Deserialize<DeepgramLivestreamResult>(_buffer.AsSpan().TrimEnd((byte)'\0'), DeepgramClient.DefaultJsonSerializerOptions);
+                    // Resize the buffer
+                    byte[] temp = new byte[_buffer.Length * 2];
+                    _buffer.CopyTo(temp, 0);
+                    _buffer = temp;
+
+                    // Append the next chunk
+                    result = await WebSocket.ReceiveAsync(_buffer.AsMemory(bytesRead), cancellationToken);
+                    bytesRead += result.Count;
                 }
-                catch (JsonException error)
-                {
-                    return JsonSerializer.Deserialize<DeepgramLivestreamResult>(_buffer.AsSpan(0, (int)error.BytePositionInLine!.Value), DeepgramClient.DefaultJsonSerializerOptions);
-                }
+
+                return JsonSerializer.Deserialize<DeepgramLivestreamResult>(_buffer.AsSpan(0, bytesRead), DeepgramClient.DefaultJsonSerializerOptions);
             }
             catch (JsonException error)
             {
