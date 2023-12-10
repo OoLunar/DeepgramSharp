@@ -11,21 +11,12 @@ using DeepgramSharp.Exceptions;
 
 namespace DeepgramSharp
 {
-    public sealed class DeepgramPreRecordedApi
+    public sealed class DeepgramPreRecordedApi(DeepgramClient client, Uri? baseUri = null)
     {
         private static readonly HttpClient HttpClient = new();
 
-        public Uri BaseUri { get; init; } = new(DeepgramClient.BASE_URL + "/v1/listen");
-        public DeepgramClient Client { get; init; }
-
-        public DeepgramPreRecordedApi(DeepgramClient client, Uri? baseUri = null)
-        {
-            Client = client ?? throw new ArgumentNullException(nameof(client));
-            if (baseUri is not null)
-            {
-                BaseUri = baseUri;
-            }
-        }
+        public Uri BaseUri { get; init; } = baseUri ?? DeepgramRoutes.PrerecordedUri;
+        public DeepgramClient Client { get; init; } = client ?? throw new ArgumentNullException(nameof(client));
 
         public ValueTask<DeepgramTranscription?> TranscribeAsync(Stream audioStream, DeepgramPrerecordedApiOptionCollection? options = null, CancellationToken cancellationToken = default)
         {

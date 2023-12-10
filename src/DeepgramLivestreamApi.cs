@@ -13,9 +13,8 @@ using Microsoft.Extensions.Logging;
 
 namespace DeepgramSharp
 {
-    public sealed class DeepgramLivestreamApi : IDisposable
+    public sealed class DeepgramLivestreamApi(DeepgramClient client, Uri? baseUri = null) : IDisposable
     {
-        private const string BASE_ROUTE = "/v1/listen";
         private sealed class AuthenticatedMessageInvoker : HttpMessageInvoker
         {
             public DeepgramClient Client { get; init; }
@@ -63,26 +62,15 @@ namespace DeepgramSharp
         public event AsyncEventHandler<DeepgramLivestreamApi, DeepgramLivestreamClosedEventArgs> OnClosed { add => _closed.Register(value); remove => _closed.Unregister(value); }
         private readonly AsyncEvent<DeepgramLivestreamApi, DeepgramLivestreamClosedEventArgs> _closed = new("CLOSED", EverythingWentWrongErrorHandler);
 
-        public DeepgramClient Client { get; init; }
-        public Uri BaseUri { get; init; } = new(DeepgramClient.BASE_URL + BASE_ROUTE);
-        public ClientWebSocket WebSocket { get; init; }
+        public DeepgramClient Client { get; init; } = client ?? throw new ArgumentNullException(nameof(client));
+        public Uri BaseUri { get; init; } = baseUri ?? DeepgramRoutes.LivestreamUri;
+        public ClientWebSocket WebSocket { get; init; } = new();
         public WebSocketState State => WebSocket.State;
 
         private readonly SemaphoreSlim _semaphore = new(1, 1);
         private Memory<byte> _buffer = new byte[512];
         private DateTimeOffset _lastKeepAlive = DateTimeOffset.Now;
         private bool _isDisposed;
-
-        public DeepgramLivestreamApi(DeepgramClient client, Uri? baseUri = null)
-        {
-            Client = client ?? throw new ArgumentNullException(nameof(client));
-            if (baseUri is not null)
-            {
-                BaseUri = new(baseUri, BASE_ROUTE);
-            }
-
-            WebSocket = new();
-        }
 
         public async ValueTask ConnectAsync(DeepgramLivestreamOptionCollection? options = null, CancellationToken cancellationToken = default)
         {

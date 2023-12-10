@@ -12,7 +12,6 @@ namespace DeepgramSharp
 {
     public sealed class DeepgramClient
     {
-        internal const string BASE_URL = "https://api.deepgram.com";
         internal static readonly JsonSerializerOptions DefaultJsonSerializerOptions = new(JsonSerializerDefaults.Web)
         {
             PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
@@ -20,7 +19,7 @@ namespace DeepgramSharp
 
         private static readonly string _defaultUserAgent = $"DeepgramSharp/{typeof(DeepgramClient).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion ?? "0.1.0"}";
 
-        public Uri BaseUri { get; init; } = new Uri(BASE_URL);
+        public Uri BaseUri { get; init; }
         public DeepgramPreRecordedApi PreRecordedApi { get; init; }
         internal readonly ILogger<DeepgramClient> Logger;
         private readonly AuthenticationHeaderValue _authenticationHeader;
@@ -31,10 +30,7 @@ namespace DeepgramSharp
             _authenticationHeader = new("Token", apiKey);
             PreRecordedApi = new(this, baseUri);
             Logger = logger ?? NullLogger<DeepgramClient>.Instance;
-            if (baseUri is not null)
-            {
-                BaseUri = baseUri;
-            }
+            BaseUri = baseUri ?? DeepgramRoutes.PrerecordedUri;
         }
 
         public async ValueTask<DeepgramLivestreamApi> CreateLivestreamAsync(DeepgramLivestreamOptionCollection? options = null, CancellationToken cancellationToken = default)
