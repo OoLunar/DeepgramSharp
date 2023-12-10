@@ -4,8 +4,8 @@ using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using DeepgramSharp.Entities;
 
 namespace DeepgramSharp.Examples.LiveStreamApi
 {
@@ -21,6 +21,30 @@ namespace DeepgramSharp.Examples.LiveStreamApi
                 Model = "nova-2"
             });
 
+            SemaphoreSlim semaphoreSlim = new(0, 1);
+            StringBuilder stringBuilder = new();
+            transcriptionApi.OnTranscriptionReceived += (connection, transcriptionEventArgs) =>
+            {
+                stringBuilder.Append(transcriptionEventArgs.Result.Channel.Alternatives[0].Transcript);
+                stringBuilder.Append(' ');
+                Console.WriteLine("Transcript received.");
+                return Task.CompletedTask;
+            };
+
+            transcriptionApi.OnErrorReceived += (connection, errorEventArgs) =>
+            {
+                Console.WriteLine(errorEventArgs.Error);
+                return Task.CompletedTask;
+            };
+
+            transcriptionApi.OnClosed += (connection, closedEventArgs) =>
+            {
+                Console.WriteLine(stringBuilder.ToString());
+                Console.WriteLine("Transcript finished.");
+                semaphoreSlim.Release();
+                return Task.CompletedTask;
+            };
+
             HttpClient httpClient = new();
             using HttpResponseMessage response = await httpClient.GetAsync("https://www2.cs.uic.edu/~i101/SoundFiles/taunt.wav", HttpCompletionOption.ResponseHeadersRead);
             using HttpContent content = response.Content;
@@ -33,25 +57,9 @@ namespace DeepgramSharp.Examples.LiveStreamApi
                 await Task.Delay(200);
             }
 
-            StringBuilder stringBuilder = new();
-            DeepgramLivestreamResult? transcription = await transcriptionApi.ReceiveTranscriptionAsync();
-            if (transcription is null)
-            {
-                Console.WriteLine("Transcription failed.");
-                return;
-            }
-
-            stringBuilder.Append(transcription.Channel.Alternatives[0].Transcript);
-            stringBuilder.Append(' ');
-            transcription = await transcriptionApi.CloseAsync();
-            if (transcription is null)
-            {
-                Console.WriteLine("Transcription failed.");
-                return;
-            }
-
-            stringBuilder.Append(transcription.Channel.Alternatives[0].Transcript);
-            Console.WriteLine(stringBuilder.ToString());
+            await transcriptionApi.CloseAsync(); // Signal that we're done sending audio
+            Console.WriteLine("Requesting closure...");
+            await semaphoreSlim.WaitAsync();
             Debugger.Break();
         }
     }

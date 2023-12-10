@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace DeepgramSharp
 {
@@ -20,13 +22,15 @@ namespace DeepgramSharp
 
         public Uri BaseUri { get; init; } = new Uri(BASE_URL);
         public DeepgramPreRecordedApi PreRecordedApi { get; init; }
+        internal readonly ILogger<DeepgramClient> Logger;
         private readonly AuthenticationHeaderValue _authenticationHeader;
 
-        public DeepgramClient(string apiKey, Uri? baseUri = null)
+        public DeepgramClient(string apiKey, Uri? baseUri = null, ILogger<DeepgramClient>? logger = null)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(apiKey, nameof(apiKey));
             _authenticationHeader = new("Token", apiKey);
             PreRecordedApi = new(this, baseUri);
+            Logger = logger ?? NullLogger<DeepgramClient>.Instance;
             if (baseUri is not null)
             {
                 BaseUri = baseUri;

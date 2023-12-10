@@ -1,16 +1,22 @@
 using System;
+using System.Buffers;
 using System.Net.Http;
 using System.Net.WebSockets;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using DeepgramSharp.AsyncEvents;
 using DeepgramSharp.Entities;
+using DeepgramSharp.EventArgs;
+using DeepgramSharp.Exceptions;
+using Microsoft.Extensions.Logging;
 
 namespace DeepgramSharp
 {
     public sealed class DeepgramLivestreamApi : IDisposable
     {
-        private class AuthenticatedMessageInvoker : HttpMessageInvoker
+        private const string BASE_ROUTE = "/v1/listen";
+        private sealed class AuthenticatedMessageInvoker : HttpMessageInvoker
         {
             public DeepgramClient Client { get; init; }
 
@@ -25,9 +31,14 @@ namespace DeepgramSharp
                 Client.SetDefaultHeaders(request);
                 return base.SendAsync(request, cancellationToken);
             }
+
+            public override HttpResponseMessage Send(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                Client.SetDefaultHeaders(request);
+                return base.Send(request, cancellationToken);
+            }
         }
 
-        private const string BASE_ROUTE = "/v1/listen";
         private static readonly TimeSpan KeepAliveInterval = TimeSpan.FromSeconds(6);
         private static readonly byte[] KeepAliveMessage = JsonSerializer.SerializeToUtf8Bytes(new DeepgramWebsocketPayload()
         {
@@ -39,16 +50,28 @@ namespace DeepgramSharp
             Type = DeepgramPayloadType.CloseStream.ToString()
         }, DeepgramClient.DefaultJsonSerializerOptions);
 
+        // Metadata
+        public event AsyncEventHandler<DeepgramLivestreamApi, DeepgramLivestreamMetadataReceivedEventArgs> OnMetadataReceived { add => _metadataReceived.Register(value); remove => _metadataReceived.Unregister(value); }
+        private readonly AsyncEvent<DeepgramLivestreamApi, DeepgramLivestreamMetadataReceivedEventArgs> _metadataReceived = new("METADATA_RECEIVED", EverythingWentWrongErrorHandler);
+
+        public event AsyncEventHandler<DeepgramLivestreamApi, DeepgramLivestreamTranscriptReceivedEventArgs> OnTranscriptionReceived { add => _transcriptionReceived.Register(value); remove => _transcriptionReceived.Unregister(value); }
+        private readonly AsyncEvent<DeepgramLivestreamApi, DeepgramLivestreamTranscriptReceivedEventArgs> _transcriptionReceived = new("TRANSCRIPTION_RECEIVED", EverythingWentWrongErrorHandler);
+
+        public event AsyncEventHandler<DeepgramLivestreamApi, DeepgramLivestreamErrorEventArgs> OnErrorReceived { add => _errorReceived.Register(value); remove => _errorReceived.Unregister(value); }
+        private readonly AsyncEvent<DeepgramLivestreamApi, DeepgramLivestreamErrorEventArgs> _errorReceived = new("ERROR_RECEIVED", EverythingWentWrongErrorHandler);
+
+        public event AsyncEventHandler<DeepgramLivestreamApi, DeepgramLivestreamClosedEventArgs> OnClosed { add => _closed.Register(value); remove => _closed.Unregister(value); }
+        private readonly AsyncEvent<DeepgramLivestreamApi, DeepgramLivestreamClosedEventArgs> _closed = new("CLOSED", EverythingWentWrongErrorHandler);
+
         public DeepgramClient Client { get; init; }
         public Uri BaseUri { get; init; } = new(DeepgramClient.BASE_URL + BASE_ROUTE);
         public ClientWebSocket WebSocket { get; init; }
         public WebSocketState State => WebSocket.State;
 
         private readonly SemaphoreSlim _semaphore = new(1, 1);
-        private byte[] _buffer = new byte[512];
+        private Memory<byte> _buffer = new byte[512];
         private DateTimeOffset _lastKeepAlive = DateTimeOffset.Now;
         private bool _isDisposed;
-
 
         public DeepgramLivestreamApi(DeepgramClient client, Uri? baseUri = null)
         {
@@ -74,6 +97,7 @@ namespace DeepgramSharp
                 Query = options?.ToQueryString() ?? ""
             }.Uri, new AuthenticatedMessageInvoker(Client), cancellationToken);
             _ = KeepAliveLoopAsync();
+            _ = ReceiveTranscriptionLoopAsync();
         }
 
         public async ValueTask SendAudioAsync(ReadOnlyMemory<byte> audioFrames, CancellationToken cancellationToken = default)
@@ -87,55 +111,7 @@ namespace DeepgramSharp
             _lastKeepAlive = DateTimeOffset.UtcNow;
         }
 
-        public async ValueTask<DeepgramLivestreamResult?> ReceiveTranscriptionAsync(CancellationToken cancellationToken = default)
-        {
-            if (WebSocket.State != WebSocketState.Open)
-            {
-                throw new InvalidOperationException("WebSocket is not open.");
-            }
-
-            await _semaphore.WaitAsync(cancellationToken);
-            try
-            {
-                // Clear the buffer
-                Array.Clear(_buffer, 0, _buffer.Length);
-                ValueWebSocketReceiveResult result = await WebSocket.ReceiveAsync(_buffer.AsMemory(), cancellationToken);
-                if (result.MessageType == WebSocketMessageType.Close)
-                {
-                    return null;
-                }
-                else if (result.MessageType != WebSocketMessageType.Text)
-                {
-                    throw new InvalidOperationException("WebSocket received unexpected message type.");
-                }
-
-                int bytesRead = result.Count;
-                while (!result.EndOfMessage)
-                {
-                    // Resize the buffer
-                    byte[] temp = new byte[_buffer.Length * 2];
-                    _buffer.CopyTo(temp, 0);
-                    _buffer = temp;
-
-                    // Append the next chunk
-                    result = await WebSocket.ReceiveAsync(_buffer.AsMemory(bytesRead), cancellationToken);
-                    bytesRead += result.Count;
-                }
-
-                return JsonSerializer.Deserialize<DeepgramLivestreamResult>(_buffer.AsSpan(0, bytesRead), DeepgramClient.DefaultJsonSerializerOptions);
-            }
-            catch (JsonException error)
-            {
-                JsonDocument document = JsonDocument.Parse(_buffer.AsMemory(0, (int)error.BytePositionInLine!.Value));
-                throw new DeepgramException(document);
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
-        }
-
-        public async ValueTask<DeepgramLivestreamResult?> CloseAsync(CancellationToken cancellationToken = default)
+        public async ValueTask CloseAsync(CancellationToken cancellationToken = default)
         {
             if (WebSocket.State == WebSocketState.Closed)
             {
@@ -143,7 +119,6 @@ namespace DeepgramSharp
             }
 
             await WebSocket.SendAsync(CloseMessage, WebSocketMessageType.Text, true, cancellationToken);
-            return await ReceiveTranscriptionAsync(cancellationToken);
         }
 
         private async Task KeepAliveLoopAsync()
@@ -162,6 +137,72 @@ namespace DeepgramSharp
                 await WebSocket.SendAsync(KeepAliveMessage, WebSocketMessageType.Text, true, CancellationToken.None);
                 _lastKeepAlive = DateTimeOffset.UtcNow;
                 _semaphore.Release();
+            }
+        }
+
+        private async Task ReceiveTranscriptionLoopAsync()
+        {
+            while (!_isDisposed && WebSocket.State == WebSocketState.Open)
+            {
+                await _semaphore.WaitAsync();
+                try
+                {
+                    ValueWebSocketReceiveResult result = await WebSocket.ReceiveAsync(_buffer, default);
+                    if (result.MessageType == WebSocketMessageType.Close)
+                    {
+                        _ = _closed.InvokeAsync(this, new());
+                    }
+                    else if (result.MessageType != WebSocketMessageType.Text)
+                    {
+                        throw new InvalidOperationException("WebSocket received unexpected message type.");
+                    }
+
+                    int bytesRead = result.Count;
+                    while (!result.EndOfMessage)
+                    {
+                        // Resize the buffer
+                        Memory<byte> temp = ArrayPool<byte>.Shared.Rent(_buffer.Length * 2);
+                        _buffer.CopyTo(temp);
+                        ArrayPool<byte>.Shared.Return(_buffer.ToArray(), true);
+                        _buffer = temp;
+
+                        // Append the next chunk
+                        result = await WebSocket.ReceiveAsync(_buffer[bytesRead..], default);
+                        bytesRead += result.Count;
+                    }
+
+                    JsonDocument jsonDocument = JsonDocument.Parse(_buffer[..bytesRead]);
+                    if (!jsonDocument.RootElement.TryGetProperty("type", out JsonElement typeElement))
+                    {
+                        Client.Logger.LogError("Received an unknown message type from the Deepgram API: {JsonDocument}", jsonDocument.RootElement);
+                    }
+
+                    DeepgramWebsocketMessageType messageType = Enum.Parse<DeepgramWebsocketMessageType>(typeElement.GetString() ?? throw new InvalidOperationException("Received an unknown message type from the Deepgram API."), true);
+                    _ = messageType switch
+                    {
+                        DeepgramWebsocketMessageType.Metadata => _metadataReceived.InvokeAsync(this, new()
+                        {
+                            Metadata = JsonSerializer.Deserialize<DeepgramMetadata>(_buffer.Span[..bytesRead], DeepgramClient.DefaultJsonSerializerOptions)!
+                        }),
+                        DeepgramWebsocketMessageType.Results => _transcriptionReceived.InvokeAsync(this, new()
+                        {
+                            Result = JsonSerializer.Deserialize<DeepgramLivestreamResult>(_buffer.Span[..bytesRead], DeepgramClient.DefaultJsonSerializerOptions)!
+                        }),
+                        _ => throw new InvalidOperationException("Received an unknown message type from the Deepgram API.")
+                    };
+                }
+                catch (JsonException error) when (error.BytePositionInLine is not null)
+                {
+                    JsonDocument document = JsonDocument.Parse(_buffer[..(int)error.BytePositionInLine]);
+                    _ = _errorReceived.InvokeAsync(this, new()
+                    {
+                        Error = new DeepgramWebsocketException(document)
+                    });
+                }
+                finally
+                {
+                    _semaphore.Release();
+                }
             }
         }
 
@@ -184,5 +225,7 @@ namespace DeepgramSharp
                 _isDisposed = true;
             }
         }
+
+        private static void EverythingWentWrongErrorHandler<TArgs>(AsyncEvent<DeepgramLivestreamApi, TArgs> asyncEvent, Exception error, AsyncEventHandler<DeepgramLivestreamApi, TArgs> handler, DeepgramLivestreamApi sender, TArgs eventArgs) where TArgs : AsyncEventArgs => sender.Client.Logger.LogError(error, "Event handler '{Method}' for event {AsyncEvent} threw an unhandled exception.", handler.Method, asyncEvent.Name);
     }
 }

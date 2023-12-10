@@ -11,6 +11,6 @@ namespace DeepgramSharp.Entities
         public required double Duration { get; init; }
         public required int Channels { get; init; }
         public required IReadOnlyList<string> Models { get; init; }
-        public required object ModelInfo { get; init; }
+        public required IReadOnlyDictionary<Guid, DeepgramModelInfo> ModelInfo { get; init; }
     }
 }
