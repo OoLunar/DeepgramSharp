@@ -2,9 +2,9 @@ using System;
 using System.Net.Http;
 using System.Text.Json;
 
-namespace DeepgramSharp
+namespace DeepgramSharp.Exceptions
 {
-    public sealed class DeepgramException : Exception
+    public class DeepgramException : Exception
     {
         public HttpResponseMessage? Response { get; init; }
         public string? ErrorCode { get; init; }

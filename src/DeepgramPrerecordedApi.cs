@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using DeepgramSharp.Entities;
+using DeepgramSharp.Exceptions;
 
 namespace DeepgramSharp
 {
