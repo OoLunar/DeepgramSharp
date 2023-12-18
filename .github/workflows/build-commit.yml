@@ -43,7 +43,7 @@ jobs:
       - name: Package Project
         run: |
           NIGHTLY=$(printf "%0*d" 5 ${{ github.run_number }})
-          dotnet pack -c Release -o build -p:Nightly=Nightly-$NIGHTLY src/DeepgramSharp.csproj
+          dotnet pack -c Release -o build -p:Nightly="$NIGHTLY" src/DeepgramSharp.csproj
           dotnet nuget push "build/*" --skip-duplicate -k ${{ secrets.NUGET_ORG_API_KEY }} -s https://api.nuget.org/v3/index.json
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
