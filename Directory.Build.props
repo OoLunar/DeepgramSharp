@@ -1,10 +1,30 @@
 <Project>
+  <!-- Build -->
   <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IsPackable>false</IsPackable>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
     <ProjectRoot>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), "DeepgramSharp.sln"))</ProjectRoot>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+    <TargetFramework>net8.0</TargetFramework>
+    <Version Condition="'$(Nightly)' != ''">$(Version)-nightly-$(Nightly)</Version>
+    <Version Condition="'$(PR)' != ''">$(Version)-pr-$(PR)</Version>
     <Version>1.0.0</Version>
   </PropertyGroup>
-  <PropertyGroup Condition="$(Nightly) != ''">
-    <Version>$(Version)-$(Nightly)</Version>
+  <!-- Nuget -->
+  <PropertyGroup>
+    <Authors>OoLunar</Authors>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/OoLunar/DeepgramSharp</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>deepgram, speech-to-text, captions, speech-recognition</PackageTags>
+    <RepositoryType>Git</RepositoryType>
+    <RepositoryUrl>https://github.com/OoLunar/DeepgramSharp</RepositoryUrl>
   </PropertyGroup>
+  <!-- Resource Files -->
+  <ItemGroup>
+    <None Include="$(ProjectRoot)/LICENSE" Pack="true" PackagePath=""/>
+    <None Include="$(ProjectRoot)/README.md" Pack="true" PackagePath=""/>
+  </ItemGroup>
 </Project>
