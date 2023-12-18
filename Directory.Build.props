@@ -3,4 +3,7 @@
     <ProjectRoot>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), "DeepgramSharp.sln"))</ProjectRoot>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
   </PropertyGroup>
+  <PropertyGroup Condition="$(Nightly) != ''">
+    <Version>$(Version)-$(Nightly)</Version>
+  </PropertyGroup>
 </Project>
