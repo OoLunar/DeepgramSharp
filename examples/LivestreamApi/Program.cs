@@ -33,7 +33,7 @@ namespace DeepgramSharp.Examples.LiveStreamApi
 
             transcriptionApi.OnErrorReceived += (connection, errorEventArgs) =>
             {
-                Console.WriteLine(errorEventArgs.Error);
+                Console.WriteLine(errorEventArgs.Exception);
                 return Task.CompletedTask;
             };
 

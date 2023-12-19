@@ -14,7 +14,7 @@ namespace DeepgramSharp
         public bool DetectLanguage { get => bool.Parse(_options[nameof(DetectLanguage)]); set => _options[nameof(DetectLanguage)] = value.ToString().ToLowerInvariant(); }
 
         /// <summary>
-        /// Split audio into paragraphs. Default: <see cref="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/paragraphs" />
+        /// Split audio into paragraphs. Default: <see langword="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/paragraphs" />
         /// </summary>
         public bool Paragraphs { get => bool.Parse(_options[nameof(Paragraphs)]); set => _options[nameof(Paragraphs)] = value.ToString().ToLowerInvariant(); }
 
@@ -24,12 +24,12 @@ namespace DeepgramSharp
         public string Summarize { get => Uri.UnescapeDataString(_options[nameof(Summarize)]); set => _options[nameof(Summarize)] = Uri.EscapeDataString(value); }
 
         /// <summary>
-        /// Identify and extract key topics. Default: <see cref="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/topic-detection" />
+        /// Identify and extract key topics. Default: <see langword="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/topic-detection" />
         /// </summary>
         public bool DetectTopics { get => bool.Parse(_options[nameof(DetectTopics)]); set => _options[nameof(DetectTopics)] = value.ToString().ToLowerInvariant(); }
 
         /// <summary>
-        /// Segment speech into meaningful units based on gaps in speech. Default: <see cref="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/utterances"/>
+        /// Segment speech into meaningful units based on gaps in speech. Default: <see langword="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/utterances"/>
         /// </summary>
         public bool Utterances { get => bool.Parse(_options[nameof(Utterances)]); set => _options[nameof(Utterances)] = value.ToString().ToLowerInvariant(); }
 

@@ -13,6 +13,9 @@ using Microsoft.Extensions.Logging;
 
 namespace DeepgramSharp
 {
+    /// <summary>
+    /// Represents a connection to the Deepgram livestream API.
+    /// </summary>
     public sealed class DeepgramLivestreamApi(DeepgramClient client, Uri? baseUri = null) : IDisposable
     {
         private sealed class AuthenticatedMessageInvoker : HttpMessageInvoker
@@ -49,22 +52,48 @@ namespace DeepgramSharp
             Type = DeepgramPayloadType.CloseStream.ToString()
         }, DeepgramClient.DefaultJsonSerializerOptions);
 
-        // Metadata
+        /// <summary>
+        /// Raised when the livestream receives metadata from the Deepgram API.
+        /// </summary>
         public event AsyncEventHandler<DeepgramLivestreamApi, DeepgramLivestreamMetadataReceivedEventArgs> OnMetadataReceived { add => _metadataReceived.Register(value); remove => _metadataReceived.Unregister(value); }
         private readonly AsyncEvent<DeepgramLivestreamApi, DeepgramLivestreamMetadataReceivedEventArgs> _metadataReceived = new("METADATA_RECEIVED", EverythingWentWrongErrorHandler);
 
+        /// <summary>
+        /// Raised when the livestream receives a transcription from the Deepgram API.
+        /// </summary>
         public event AsyncEventHandler<DeepgramLivestreamApi, DeepgramLivestreamTranscriptReceivedEventArgs> OnTranscriptionReceived { add => _transcriptionReceived.Register(value); remove => _transcriptionReceived.Unregister(value); }
         private readonly AsyncEvent<DeepgramLivestreamApi, DeepgramLivestreamTranscriptReceivedEventArgs> _transcriptionReceived = new("TRANSCRIPTION_RECEIVED", EverythingWentWrongErrorHandler);
 
+        /// <summary>
+        /// Raised when an error occurs within the Deepgram API.
+        /// </summary>
         public event AsyncEventHandler<DeepgramLivestreamApi, DeepgramLivestreamErrorEventArgs> OnErrorReceived { add => _errorReceived.Register(value); remove => _errorReceived.Unregister(value); }
         private readonly AsyncEvent<DeepgramLivestreamApi, DeepgramLivestreamErrorEventArgs> _errorReceived = new("ERROR_RECEIVED", EverythingWentWrongErrorHandler);
 
+        /// <summary>
+        /// Raised when the livestream is closed by the Deepgram API.
+        /// </summary>
         public event AsyncEventHandler<DeepgramLivestreamApi, DeepgramLivestreamClosedEventArgs> OnClosed { add => _closed.Register(value); remove => _closed.Unregister(value); }
         private readonly AsyncEvent<DeepgramLivestreamApi, DeepgramLivestreamClosedEventArgs> _closed = new("CLOSED", EverythingWentWrongErrorHandler);
 
+        /// <summary>
+        /// The <see cref="DeepgramClient"/> to use for requests.
+        /// </summary>
         public DeepgramClient Client { get; init; } = client ?? throw new ArgumentNullException(nameof(client));
+
+        /// <summary>
+        /// The URI to use for requests.
+        /// </summary>
         public Uri BaseUri { get; init; } = baseUri ?? DeepgramRoutes.LivestreamUri;
+
+        /// <summary>
+        /// The underlying <see cref="ClientWebSocket"/> used for communication with the Deepgram API.
+        /// </summary>
         public ClientWebSocket WebSocket { get; init; } = new();
+
+        /// <summary>
+        /// The current state of the <see cref="WebSocket"/>.
+        /// </summary>
         public WebSocketState State => WebSocket.State;
 
         private readonly SemaphoreSlim _semaphore = new(1, 1);
@@ -72,6 +101,11 @@ namespace DeepgramSharp
         private DateTimeOffset _lastKeepAlive = DateTimeOffset.Now;
         private bool _isDisposed;
 
+        /// <summary>
+        /// Connects to the Deepgram livestream API.
+        /// </summary>
+        /// <param name="options">The options to use for the connection.</param>
+        /// <param name="cancellationToken">A <see cref="CancellationToken"/> to use for the connection.</param>
         public async ValueTask ConnectAsync(DeepgramLivestreamOptionCollection? options = null, CancellationToken cancellationToken = default)
         {
             if (WebSocket.State == WebSocketState.Open)
@@ -88,6 +122,12 @@ namespace DeepgramSharp
             _ = ReceiveTranscriptionLoopAsync();
         }
 
+        /// <summary>
+        /// Sends audio to the Deepgram livestream API.
+        /// </summary>
+        /// <param name="audioFrames">A <see cref="ReadOnlyMemory{T}"/> containing the raw audio to send.</param>
+        /// <param name="cancellationToken">A <see cref="CancellationToken"/> to use for the request.</param>
+        /// <returns>A <see cref="ValueTask"/> representing the asynchronous operation.</returns>
         public async ValueTask SendAudioAsync(ReadOnlyMemory<byte> audioFrames, CancellationToken cancellationToken = default)
         {
             if (WebSocket.State != WebSocketState.Open)
@@ -99,6 +139,11 @@ namespace DeepgramSharp
             _lastKeepAlive = DateTimeOffset.UtcNow;
         }
 
+        /// <summary>
+        /// Let's the Deepgram livestream API know that you are done sending audio.
+        /// </summary>
+        /// <param name="cancellationToken">A <see cref="CancellationToken"/> to use for the request.</param>
+        /// <returns>A <see cref="ValueTask"/> representing the asynchronous operation.</returns>
         public async ValueTask CloseAsync(CancellationToken cancellationToken = default)
         {
             if (WebSocket.State == WebSocketState.Closed)
@@ -184,7 +229,7 @@ namespace DeepgramSharp
                     JsonDocument document = JsonDocument.Parse(_buffer[..(int)error.BytePositionInLine]);
                     _ = _errorReceived.InvokeAsync(this, new()
                     {
-                        Error = new DeepgramWebsocketException(document)
+                        Exception = new DeepgramWebsocketException(document)
                     });
                 }
                 finally
@@ -194,6 +239,7 @@ namespace DeepgramSharp
             }
         }
 
+        /// <inheritdoc cref="IDisposable.Dispose"/>
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
