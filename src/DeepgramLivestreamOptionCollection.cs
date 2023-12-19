@@ -10,7 +10,7 @@ namespace DeepgramSharp
     public sealed record DeepgramLivestreamOptionCollection : DeepgramOptionCollection
     {
         /// <summary>
-        /// Indicates whether the streaming endpoint should send you updates to its transcription as more audio becomes available. When set to <see cref="true"/>, the streaming endpoint returns regular updates, which means transcription results will likely change for a period of time. By default, this flag is set to <see cref="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/interim-results"/>
+        /// Indicates whether the streaming endpoint should send you updates to its transcription as more audio becomes available. When set to <see langword="true"/>, the streaming endpoint returns regular updates, which means transcription results will likely change for a period of time. By default, this flag is set to <see langword="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/interim-results"/>
         /// </summary>
         public bool InterimResults { get => bool.Parse(_options[nameof(InterimResults)]); set => _options[nameof(InterimResults)] = value.ToString().ToLowerInvariant(); }
 

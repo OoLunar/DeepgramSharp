@@ -13,6 +13,9 @@ namespace DeepgramSharp
     /// </summary>
     public record DeepgramOptionCollection : IDictionary<string, string>
     {
+        /// <summary>
+        /// The underlying dictionary of options.
+        /// </summary>
         protected readonly Dictionary<string, string> _options = [];
 
         /// <summary>
@@ -39,12 +42,12 @@ namespace DeepgramSharp
         public CultureInfo Language { get => CultureInfo.GetCultureInfoByIetfLanguageTag(_options[nameof(Language)]); set => _options[nameof(Language)] = value.IetfLanguageTag; }
 
         /// <summary>
-        /// Add punctuation and capitalization to the transcript. Default: <see cref="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/punctuation" />
+        /// Add punctuation and capitalization to the transcript. Default: <see langword="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/punctuation" />
         /// </summary>
         public bool Punctuate { get => bool.Parse(_options[nameof(Punctuate)]); set => _options[nameof(Punctuate)] = value.ToString().ToLowerInvariant(); }
 
         /// <summary>
-        /// Remove profanity from the transcript. Default: <see cref="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/profanity-filter" />
+        /// Remove profanity from the transcript. Default: <see langword="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/profanity-filter" />
         /// </summary>
         public bool ProfanityFilter { get => bool.Parse(_options[nameof(ProfanityFilter)]); set => _options[nameof(ProfanityFilter)] = value.ToString().ToLowerInvariant(); }
 
@@ -59,22 +62,22 @@ namespace DeepgramSharp
         public bool Diarize { get => bool.Parse(_options[nameof(Diarize)]); set => _options[nameof(Diarize)] = value.ToString().ToLowerInvariant(); }
 
         /// <summary>
-        /// Version of the diarization feature to use. Only used when <see cref="Diarize"/> is <see cref="true"/>. Default: <c>latest</c>. Learn more: <see href="https://developers.deepgram.com/docs/diarization#enable-feature" />
+        /// Version of the diarization feature to use. Only used when <see cref="Diarize"/> is <see langword="true"/>. Default: <c>latest</c>. Learn more: <see href="https://developers.deepgram.com/docs/diarization#enable-feature" />
         /// </summary>
         public string DiarizeVersion { get => Uri.UnescapeDataString(_options[nameof(DiarizeVersion)]); set => _options[nameof(DiarizeVersion)] = Uri.EscapeDataString(value); }
 
         /// <summary>
-        /// Apply formatting to transcript output. When set to true, additional formatting will be applied to transcripts to improve readability. Default: <see cref="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/smart-format" />
+        /// Apply formatting to transcript output. When set to true, additional formatting will be applied to transcripts to improve readability. Default: <see langword="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/smart-format" />
         /// </summary>
         public bool SmartFormat { get => bool.Parse(_options[nameof(SmartFormat)]); set => _options[nameof(SmartFormat)] = value.ToString().ToLowerInvariant(); }
 
         /// <summary>
-        /// Whether to include words like "uh" and "um" in transcription output. Default: <see cref="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/filler-words" />
+        /// Whether to include words like "uh" and "um" in transcription output. Default: <see langword="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/filler-words" />
         /// </summary>
         public bool FillerWords { get => bool.Parse(_options[nameof(FillerWords)]); set => _options[nameof(FillerWords)] = value.ToString().ToLowerInvariant(); }
 
         /// <summary>
-        /// Transcribe each audio channel independently. Default: <see cref="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/multichannel" />
+        /// Transcribe each audio channel independently. Default: <see langword="false"/>. Learn more: <see href="https://developers.deepgram.com/docs/multichannel" />
         /// </summary>
         public bool MultiChannel { get => bool.Parse(_options[nameof(MultiChannel)]); set => _options[nameof(MultiChannel)] = value.ToString().ToLowerInvariant(); }
 
