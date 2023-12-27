@@ -1,0 +1,1494 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class DeepgramOptionCollection
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class DeepgramOptionCollection
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/OoLunar/DeepgramSharp/new/master/apiSpec/new?filename=DeepgramSharp_DeepgramOptionCollection.md&amp;value=---%0Auid%3A%20DeepgramSharp.DeepgramOptionCollection%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="DeepgramSharp.DeepgramOptionCollection">
+
+
+
+  <h1 id="DeepgramSharp_DeepgramOptionCollection" data-uid="DeepgramSharp.DeepgramOptionCollection" class="text-break">
+    Class DeepgramOptionCollection
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="DeepgramSharp.html">DeepgramSharp</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>DeepgramSharp.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents a collection of common options that can be passed to the Deepgram API.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public record DeepgramOptionCollection : IDictionary&lt;string, string&gt;, ICollection&lt;KeyValuePair&lt;string, string&gt;&gt;, IEnumerable&lt;KeyValuePair&lt;string, string&gt;&gt;, IEnumerable, IEquatable&lt;DeepgramOptionCollection&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">DeepgramOptionCollection</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="DeepgramSharp.DeepgramOptionCollection.html">DeepgramOptionCollection</a>&gt;</div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="DeepgramSharp.DeepgramLivestreamOptionCollection.html">DeepgramLivestreamOptionCollection</a></div>
+      <div><a class="xref" href="DeepgramSharp.DeepgramPrerecordedApiOptionCollection.html">DeepgramPrerecordedApiOptionCollection</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection__options" data-uid="DeepgramSharp.DeepgramOptionCollection._options">
+  _options
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The underlying dictionary of options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly Dictionary&lt;string, string&gt; _options</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Alternatives_" data-uid="DeepgramSharp.DeepgramOptionCollection.Alternatives*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Alternatives" data-uid="DeepgramSharp.DeepgramOptionCollection.Alternatives">
+  Alternatives
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Number of transcripts to return per request. Default: <code>1</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Alternatives { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Callback_" data-uid="DeepgramSharp.DeepgramOptionCollection.Callback*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Callback" data-uid="DeepgramSharp.DeepgramOptionCollection.Callback">
+  Callback
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Callback URL to provide if you would like your submitted audio to be processed asynchronously. Learn more: <a href="https://developers.deepgram.com/docs/callback">https://developers.deepgram.com/docs/callback</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Uri Callback { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Count_" data-uid="DeepgramSharp.DeepgramOptionCollection.Count*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Count" data-uid="DeepgramSharp.DeepgramOptionCollection.Count">
+  Count
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the number of elements contained in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of elements contained in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Diarize_" data-uid="DeepgramSharp.DeepgramOptionCollection.Diarize*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Diarize" data-uid="DeepgramSharp.DeepgramOptionCollection.Diarize">
+  Diarize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recognize speaker changes. Each word in the transcript will be assigned a speaker number starting at <code>0</code>. Learn more: <a href="https://developers.deepgram.com/docs/diarization">https://developers.deepgram.com/docs/diarization</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Diarize { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_DiarizeVersion_" data-uid="DeepgramSharp.DeepgramOptionCollection.DiarizeVersion*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_DiarizeVersion" data-uid="DeepgramSharp.DeepgramOptionCollection.DiarizeVersion">
+  DiarizeVersion
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Version of the diarization feature to use. Only used when <a class="xref" href="DeepgramSharp.DeepgramOptionCollection.html#DeepgramSharp_DeepgramOptionCollection_Diarize">Diarize</a> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>. Default: <code>latest</code>. Learn more: <a href="https://developers.deepgram.com/docs/diarization#enable-feature">https://developers.deepgram.com/docs/diarization#enable-feature</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DiarizeVersion { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_FillerWords_" data-uid="DeepgramSharp.DeepgramOptionCollection.FillerWords*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_FillerWords" data-uid="DeepgramSharp.DeepgramOptionCollection.FillerWords">
+  FillerWords
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether to include words like &quot;uh&quot; and &quot;um&quot; in transcription output. Default: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. Learn more: <a href="https://developers.deepgram.com/docs/filler-words">https://developers.deepgram.com/docs/filler-words</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool FillerWords { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_IsReadOnly_" data-uid="DeepgramSharp.DeepgramOptionCollection.IsReadOnly*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_IsReadOnly" data-uid="DeepgramSharp.DeepgramOptionCollection.IsReadOnly">
+  IsReadOnly
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Item_" data-uid="DeepgramSharp.DeepgramOptionCollection.Item*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Item_System_String_" data-uid="DeepgramSharp.DeepgramOptionCollection.Item(System.String)">
+  this[string]
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the element with the specified key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string this[string key] { get; set; }</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key of the element to get or set.</p>
+</dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The element with the specified key.</p>
+</dd>
+  </dl>
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p><code class="paramref">key</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keynotfoundexception">KeyNotFoundException</a></dt>
+    <dd><p>The property is retrieved and <code class="paramref">key</code> is not found.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The property is set and the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Keys_" data-uid="DeepgramSharp.DeepgramOptionCollection.Keys*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Keys" data-uid="DeepgramSharp.DeepgramOptionCollection.Keys">
+  Keys
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> containing the keys of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;string&gt; Keys { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> containing the keys of the object that implements <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Keywords_" data-uid="DeepgramSharp.DeepgramOptionCollection.Keywords*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Keywords" data-uid="DeepgramSharp.DeepgramOptionCollection.Keywords">
+  Keywords
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Uncommon proper nouns or other words to transcribe that are not a part of the model's vocabulary. Learn more: <a href="https://developers.deepgram.com/docs/keywords">https://developers.deepgram.com/docs/keywords</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, double&gt; Keywords { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Language_" data-uid="DeepgramSharp.DeepgramOptionCollection.Language*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Language" data-uid="DeepgramSharp.DeepgramOptionCollection.Language">
+  Language
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The <code>BCP-47</code> language tag that hints at the primary spoken language. Default: <code>en</code>. Learn more: <a href="https://developers.deepgram.com/docs/language">https://developers.deepgram.com/docs/language</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CultureInfo Language { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.globalization.cultureinfo">CultureInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="DeepgramSharp_DeepgramOptionCollection_Language_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The definition of <code>BCP-47</code> is available at <a href="https://tools.ietf.org/html/bcp47">https://tools.ietf.org/html/bcp47</a>.</p>
+</div>
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Model_" data-uid="DeepgramSharp.DeepgramOptionCollection.Model*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Model" data-uid="DeepgramSharp.DeepgramOptionCollection.Model">
+  Model
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AI model used to process submitted audio. Default: <code>general</code>. Learn More: <a href="https://developers.deepgram.com/docs/model">https://developers.deepgram.com/docs/model</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Model { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_MultiChannel_" data-uid="DeepgramSharp.DeepgramOptionCollection.MultiChannel*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_MultiChannel" data-uid="DeepgramSharp.DeepgramOptionCollection.MultiChannel">
+  MultiChannel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Transcribe each audio channel independently. Default: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. Learn more: <a href="https://developers.deepgram.com/docs/multichannel">https://developers.deepgram.com/docs/multichannel</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool MultiChannel { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_ProfanityFilter_" data-uid="DeepgramSharp.DeepgramOptionCollection.ProfanityFilter*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_ProfanityFilter" data-uid="DeepgramSharp.DeepgramOptionCollection.ProfanityFilter">
+  ProfanityFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Remove profanity from the transcript. Default: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. Learn more: <a href="https://developers.deepgram.com/docs/profanity-filter">https://developers.deepgram.com/docs/profanity-filter</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ProfanityFilter { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Punctuate_" data-uid="DeepgramSharp.DeepgramOptionCollection.Punctuate*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Punctuate" data-uid="DeepgramSharp.DeepgramOptionCollection.Punctuate">
+  Punctuate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add punctuation and capitalization to the transcript. Default: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. Learn more: <a href="https://developers.deepgram.com/docs/punctuation">https://developers.deepgram.com/docs/punctuation</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Punctuate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Redact_" data-uid="DeepgramSharp.DeepgramOptionCollection.Redact*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Redact" data-uid="DeepgramSharp.DeepgramOptionCollection.Redact">
+  Redact
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Redact sensitive information, replacing redacted content with asterisks (*). Learn more: <a href="https://developers.deepgram.com/docs/redaction">https://developers.deepgram.com/docs/redaction</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; Redact { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Replace_" data-uid="DeepgramSharp.DeepgramOptionCollection.Replace*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Replace" data-uid="DeepgramSharp.DeepgramOptionCollection.Replace">
+  Replace
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Terms or phrases to search for in the submitted audio and replace. Learn more: <a href="https://developers.deepgram.com/docs/find-and-replace">https://developers.deepgram.com/docs/find-and-replace</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, string&gt; Replace { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Search_" data-uid="DeepgramSharp.DeepgramOptionCollection.Search*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Search" data-uid="DeepgramSharp.DeepgramOptionCollection.Search">
+  Search
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Terms or phrases to search for in the submitted audio. Learn more: <a href="https://developers.deepgram.com/docs/search">https://developers.deepgram.com/docs/search</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; Search { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_SmartFormat_" data-uid="DeepgramSharp.DeepgramOptionCollection.SmartFormat*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_SmartFormat" data-uid="DeepgramSharp.DeepgramOptionCollection.SmartFormat">
+  SmartFormat
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Apply formatting to transcript output. When set to true, additional formatting will be applied to transcripts to improve readability. Default: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. Learn more: <a href="https://developers.deepgram.com/docs/smart-format">https://developers.deepgram.com/docs/smart-format</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SmartFormat { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Tag_" data-uid="DeepgramSharp.DeepgramOptionCollection.Tag*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Tag" data-uid="DeepgramSharp.DeepgramOptionCollection.Tag">
+  Tag
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tag to associate with the request. Learn more: <a href="https://developers.deepgram.com/docs/tagging">https://developers.deepgram.com/docs/tagging</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Tag { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Tier_" data-uid="DeepgramSharp.DeepgramOptionCollection.Tier*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Tier" data-uid="DeepgramSharp.DeepgramOptionCollection.Tier">
+  Tier
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Level of model you would like to use in your request. Default: <code>base</code>. Learn More: <a href="https://developers.deepgram.com/docs/tier">https://developers.deepgram.com/docs/tier</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Tier { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Values_" data-uid="DeepgramSharp.DeepgramOptionCollection.Values*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Values" data-uid="DeepgramSharp.DeepgramOptionCollection.Values">
+  Values
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> containing the values in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;string&gt; Values { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> containing the values in the object that implements <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Version_" data-uid="DeepgramSharp.DeepgramOptionCollection.Version*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Version" data-uid="DeepgramSharp.DeepgramOptionCollection.Version">
+  Version
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Version of the model to use. Default: <code>latest</code>. Learn more: <a href="https://developers.deepgram.com/docs/version">https://developers.deepgram.com/docs/version</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Version { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Add_" data-uid="DeepgramSharp.DeepgramOptionCollection.Add*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Add_System_Collections_Generic_KeyValuePair_System_String_System_String__" data-uid="DeepgramSharp.DeepgramOptionCollection.Add(System.Collections.Generic.KeyValuePair{System.String,System.String})">
+  Add(KeyValuePair&lt;string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds an item to the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(KeyValuePair&lt;string, string&gt; item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The object to add to the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Add_" data-uid="DeepgramSharp.DeepgramOptionCollection.Add*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Add_System_String_System_String_" data-uid="DeepgramSharp.DeepgramOptionCollection.Add(System.String,System.String)">
+  Add(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds an element with the provided key and value to the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(string key, string value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The object to use as the key of the element to add.</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The object to use as the value of the element to add.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p><code class="paramref">key</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>An element with the same key already exists in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Clear_" data-uid="DeepgramSharp.DeepgramOptionCollection.Clear*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Clear" data-uid="DeepgramSharp.DeepgramOptionCollection.Clear">
+  Clear()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes all items from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Contains_" data-uid="DeepgramSharp.DeepgramOptionCollection.Contains*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Contains_System_Collections_Generic_KeyValuePair_System_String_System_String__" data-uid="DeepgramSharp.DeepgramOptionCollection.Contains(System.Collections.Generic.KeyValuePair{System.String,System.String})">
+  Contains(KeyValuePair&lt;string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> contains a specific value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(KeyValuePair&lt;string, string&gt; item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The object to locate in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> is found in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_ContainsKey_" data-uid="DeepgramSharp.DeepgramOptionCollection.ContainsKey*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_ContainsKey_System_String_" data-uid="DeepgramSharp.DeepgramOptionCollection.ContainsKey(System.String)">
+  ContainsKey(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a> contains an element with the specified key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ContainsKey(string key)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key to locate in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a> contains an element with the key; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p><code class="paramref">key</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_CopyTo_" data-uid="DeepgramSharp.DeepgramOptionCollection.CopyTo*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_CopyTo_System_Collections_Generic_KeyValuePair_System_String_System_String____System_Int32_" data-uid="DeepgramSharp.DeepgramOptionCollection.CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.String}[],System.Int32)">
+  CopyTo(KeyValuePair&lt;string, string&gt;[], int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Copies the elements of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> to an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a>, starting at a particular <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyTo(KeyValuePair&lt;string, string&gt;[] array, int arrayIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;[]</dt>
+    <dd><p>The one-dimensional <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> that is the destination of the elements copied from <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>. The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> must have zero-based indexing.</p>
+</dd>
+    <dt><code>arrayIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The zero-based index in <code class="paramref">array</code> at which copying begins.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p><code class="paramref">array</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p><code class="paramref">arrayIndex</code> is less than 0.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>The number of elements in the source <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is greater than the available space from <code class="paramref">arrayIndex</code> to the end of the destination <code class="paramref">array</code>.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_GetEnumerator_" data-uid="DeepgramSharp.DeepgramOptionCollection.GetEnumerator*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_GetEnumerator" data-uid="DeepgramSharp.DeepgramOptionCollection.GetEnumerator">
+  GetEnumerator()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;KeyValuePair&lt;string, string&gt;&gt; GetEnumerator()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd><p>An enumerator that can be used to iterate through the collection.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Remove_" data-uid="DeepgramSharp.DeepgramOptionCollection.Remove*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Remove_System_Collections_Generic_KeyValuePair_System_String_System_String__" data-uid="DeepgramSharp.DeepgramOptionCollection.Remove(System.Collections.Generic.KeyValuePair{System.String,System.String})">
+  Remove(KeyValuePair&lt;string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L182"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes the first occurrence of a specific object from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(KeyValuePair&lt;string, string&gt; item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The object to remove from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> was successfully removed from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if <code class="paramref">item</code> is not found in the original <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_Remove_" data-uid="DeepgramSharp.DeepgramOptionCollection.Remove*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_Remove_System_String_" data-uid="DeepgramSharp.DeepgramOptionCollection.Remove(System.String)">
+  Remove(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes the element with the specified key from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(string key)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key of the element to remove.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the element is successfully removed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.  This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if <code class="paramref">key</code> was not found in the original <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p><code class="paramref">key</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_ToQueryString_" data-uid="DeepgramSharp.DeepgramOptionCollection.ToQueryString*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_ToQueryString" data-uid="DeepgramSharp.DeepgramOptionCollection.ToQueryString">
+  ToQueryString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Converts the specified options to a query string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToQueryString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The query string.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_ToSnakeCase_" data-uid="DeepgramSharp.DeepgramOptionCollection.ToSnakeCase*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_ToSnakeCase_System_String_" data-uid="DeepgramSharp.DeepgramOptionCollection.ToSnakeCase(System.String)">
+  ToSnakeCase(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Converts a string to snake case.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static string ToSnakeCase(string str)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The string to convert.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The snake cased string.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DeepgramSharp_DeepgramOptionCollection_TryGetValue_" data-uid="DeepgramSharp.DeepgramOptionCollection.TryGetValue*"></a>
+
+  <h3 id="DeepgramSharp_DeepgramOptionCollection_TryGetValue_System_String_System_String__" data-uid="DeepgramSharp.DeepgramOptionCollection.TryGetValue(System.String,System.String@)">
+  TryGetValue(string, out string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value associated with the specified key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetValue(string key, out string value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key whose value to get.</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>When this method returns, the value associated with the specified key, if the key is found; otherwise, the default value for the type of the <code class="paramref">value</code> parameter. This parameter is passed uninitialized.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the object that implements <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a> contains an element with the specified key; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p><code class="paramref">key</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramOptionCollection.cs/#L14" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

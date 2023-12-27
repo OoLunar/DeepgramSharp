@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace DeepgramSharp.Tiers
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace DeepgramSharp.Tiers
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/favicon.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="DeepgramSharp.Tiers">
+
+  <h1 id="DeepgramSharp_Tiers" data-uid="DeepgramSharp.Tiers" class="text-break">Namespace DeepgramSharp.Tiers
+</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="DeepgramSharp.Tiers.DeepgramBaseTier.html">DeepgramBaseTier</a></dt>
+      <dd><p>Base model tiers are built on our signature end-to-end deep learning speech model architecture. They offer a solid combination of accuracy and cost effectiveness in some cases.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="DeepgramSharp.Tiers.DeepgramEnhancedTier.html">DeepgramEnhancedTier</a></dt>
+      <dd><p>Enhanced model tiers are still some of our most powerful ASR models; they generally have higher accuracy and better word recognition than our base models, and they handle uncommon words significantly better.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="DeepgramSharp.Tiers.DeepgramNova2Tier.html">DeepgramNova2Tier</a></dt>
+      <dd><p>Nova-2 expands on <a class="xref" href="DeepgramSharp.Tiers.DeepgramNovaTier.html">DeepgramNovaTier</a> advancements with speech-specific optimizations to the underlying Transformer architecture, advanced data curation techniques, and a multi-stage training methodology. These changes yield reduced word error rate (WER) and enhancements to entity recognition (i.e. proper nouns, alphanumerics, etc.), punctuation, and capitalization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="DeepgramSharp.Tiers.DeepgramNovaTier.html">DeepgramNovaTier</a></dt>
+      <dd><p>Nova is the predecessor to <a class="xref" href="DeepgramSharp.Tiers.DeepgramNova2Tier.html">DeepgramNova2Tier</a>. Training on this model spans over 100 domains and 47 billion tokens, making it the deepest-trained automatic speech recognition (ASR) model to date. Nova doesn't just excel in one specific domain — it is ideal for a wide array of voice applications that require high accuracy in diverse contexts.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="DeepgramSharp.Tiers.DeepgramWhisperTier.html">DeepgramWhisperTier</a></dt>
+      <dd><p>Deepgram's Whisper Cloud is a fully managed API that gives you access to Deepgram's version of OpenAI’s Whisper model. Read our guide Deepgram Whisper Cloud for a deeper dive into this offering: <a href="https://developers.deepgram.com/docs/deepgram-whisper-cloud">https://developers.deepgram.com/docs/deepgram-whisper-cloud</a></p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="DeepgramSharp.Tiers.IDeepgramTier.html">IDeepgramTier</a></dt>
+      <dd><p>Represents a Deepgram tier.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="DeepgramSharp.Tiers.IDeepgramTier-1.html">IDeepgramTier&lt;T&gt;</a></dt>
+      <dd><p>A strongly-typed Deepgram tier.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="DeepgramSharp.Tiers.DeepgramBaseModel.html">DeepgramBaseModel</a></dt>
+      <dd><p>Base model tiers are built on our signature end-to-end deep learning speech model architecture. They offer a solid combination of accuracy and cost effectiveness in some cases.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="DeepgramSharp.Tiers.DeepgramEnhancedModel.html">DeepgramEnhancedModel</a></dt>
+      <dd><p>Enhanced model tiers are still some of our most powerful ASR models; they generally have higher accuracy and better word recognition than our base models, and they handle uncommon words significantly better.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="DeepgramSharp.Tiers.DeepgramNova2Model.html">DeepgramNova2Model</a></dt>
+      <dd><p>Nova-2 expands on <a class="xref" href="DeepgramSharp.Tiers.DeepgramNovaTier.html">DeepgramNovaTier</a> advancements with speech-specific optimizations to the underlying Transformer architecture, advanced data curation techniques, and a multi-stage training methodology. These changes yield reduced word error rate (WER) and enhancements to entity recognition (i.e. proper nouns, alphanumerics, etc.), punctuation, and capitalization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="DeepgramSharp.Tiers.DeepgramNovaModel.html">DeepgramNovaModel</a></dt>
+      <dd><p>Nova is the predecessor to <a class="xref" href="DeepgramSharp.Tiers.DeepgramNova2Tier.html">DeepgramNova2Tier</a>. Training on this model spans over 100 domains and 47 billion tokens, making it the deepest-trained automatic speech recognition (ASR) model to date. Nova doesn't just excel in one specific domain — it is ideal for a wide array of voice applications that require high accuracy in diverse contexts.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="DeepgramSharp.Tiers.DeepgramWhisperModel.html">DeepgramWhisperModel</a></dt>
+      <dd><p>Deepgram's Whisper Cloud is a fully managed API that gives you access to Deepgram's version of OpenAI’s Whisper model. Read our guide Deepgram Whisper Cloud for a deeper dive into this offering: <a href="https://developers.deepgram.com/docs/deepgram-whisper-cloud">https://developers.deepgram.com/docs/deepgram-whisper-cloud</a></p>
+</dd>
+    </dl>
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

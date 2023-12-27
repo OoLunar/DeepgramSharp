@@ -1,0 +1,2 @@
+# Api Documentation
+On your left is a search bar which can be used to search for classes, methods, and other entities in the API documentation. If you're looking for a specific class, you can also use the sidebar to navigate to the class you're looking for.

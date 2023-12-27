@@ -1,0 +1,580 @@
+{
+  "source_base_path": "/home/lunar/Code/OoLunar/DeepgramSharp/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.AsyncEvents.AsyncEvent-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.AsyncEvents.AsyncEvent-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.AsyncEvents.AsyncEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.AsyncEvents.AsyncEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.AsyncEvents.AsyncEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.AsyncEvents.AsyncEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.AsyncEvents.AsyncEventExceptionHandler-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.AsyncEvents.AsyncEventExceptionHandler-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.AsyncEvents.AsyncEventHandler-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.AsyncEvents.AsyncEventHandler-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.AsyncEvents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.AsyncEvents.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.DeepgramClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.DeepgramClient.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.DeepgramLivestreamApi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.DeepgramLivestreamApi.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.DeepgramLivestreamOptionCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.DeepgramLivestreamOptionCollection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.DeepgramOptionCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.DeepgramOptionCollection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.DeepgramPreRecordedApi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.DeepgramPreRecordedApi.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.DeepgramPrerecordedApiOptionCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.DeepgramPrerecordedApiOptionCollection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.DeepgramRoutes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.DeepgramRoutes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramAlternative.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramAlternative.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramChannel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramChannel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramEncoding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramEncoding.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramLivestreamResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramLivestreamResponse.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramLivestreamResponseType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramLivestreamResponseType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramLivestreamResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramLivestreamResult.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramMetadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramMetadata.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramModelInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramModelInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramPayloadType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramPayloadType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramResult.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramTranscription.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramTranscription.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramUrlPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramUrlPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramWebsocketMessageType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramWebsocketMessageType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.DeepgramWord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.DeepgramWord.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Entities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Entities.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.EventArgs.DeepgramEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.EventArgs.DeepgramEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.EventArgs.DeepgramLivestreamClosedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.EventArgs.DeepgramLivestreamClosedEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.EventArgs.DeepgramLivestreamErrorEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.EventArgs.DeepgramLivestreamErrorEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.EventArgs.DeepgramLivestreamMetadataReceivedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.EventArgs.DeepgramLivestreamMetadataReceivedEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.EventArgs.DeepgramLivestreamTranscriptReceivedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.EventArgs.DeepgramLivestreamTranscriptReceivedEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.EventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.EventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Exceptions.DeepgramException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Exceptions.DeepgramException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Exceptions.DeepgramWebsocketException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Exceptions.DeepgramWebsocketException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Exceptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.DeepgramBaseModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.DeepgramBaseModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.DeepgramBaseTier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.DeepgramBaseTier.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.DeepgramEnhancedModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.DeepgramEnhancedModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.DeepgramEnhancedTier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.DeepgramEnhancedTier.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.DeepgramNova2Model.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.DeepgramNova2Model.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.DeepgramNova2Tier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.DeepgramNova2Tier.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.DeepgramNovaModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.DeepgramNovaModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.DeepgramNovaTier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.DeepgramNovaTier.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.DeepgramWhisperModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.DeepgramWhisperModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.DeepgramWhisperTier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.DeepgramWhisperTier.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.IDeepgramTier-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.IDeepgramTier-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.IDeepgramTier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.IDeepgramTier.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.Tiers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.Tiers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeepgramSharp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeepgramSharp.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
