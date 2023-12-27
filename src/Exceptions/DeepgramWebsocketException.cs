@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Text.Json;
 
 namespace DeepgramSharp.Exceptions
@@ -13,6 +12,6 @@ namespace DeepgramSharp.Exceptions
         /// </summary>
         /// <param name="jsonDocument">The <see cref="JsonDocument"/> containing the error.</param>
         /// <returns>A new <see cref="DeepgramWebsocketException"/>.</returns>
-        internal DeepgramWebsocketException(JsonDocument jsonDocument) : base(jsonDocument) => Debugger.Break();
+        internal DeepgramWebsocketException(JsonDocument jsonDocument) : base(jsonDocument) { }
     }
 }
