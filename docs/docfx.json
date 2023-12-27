@@ -1,0 +1,49 @@
+{
+  "build": {
+    "content": [
+      {
+        "files": [
+          "api/**.yml",
+          "api/index.md"
+        ]
+      },
+      {
+        "files": [
+          "articles/**.md",
+          "articles/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ]
+      }
+    ],
+    "globalMetadata": {
+      "_appLogoPath": "images/favicon.png"
+    },
+    "output": "_site",
+    "resource": [
+      {
+        "files": [
+          "favicon.ico",
+          "images/**"
+        ]
+      }
+    ],
+    "template": [
+      "default",
+      "modern"
+    ]
+  },
+  "metadata": [
+    {
+      "dest": "api",
+      "src": [
+        {
+          "files": [
+            "**/**.csproj"
+          ],
+          "src": "../src/"
+        }
+      ]
+    }
+  ]
+}
