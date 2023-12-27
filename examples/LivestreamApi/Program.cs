@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using DeepgramSharp.Entities;
 
@@ -21,7 +20,6 @@ namespace DeepgramSharp.Examples.LiveStreamApi
                 Model = "nova-2"
             });
 
-            StringBuilder stringBuilder = new();
             HttpClient httpClient = new();
             using HttpResponseMessage response = await httpClient.GetAsync("https://www2.cs.uic.edu/~i101/SoundFiles/taunt.wav", HttpCompletionOption.ResponseHeadersRead);
             using HttpContent content = response.Content;

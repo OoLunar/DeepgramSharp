@@ -37,7 +37,7 @@ namespace DeepgramSharp.Exceptions
             ArgumentNullException.ThrowIfNull(jsonDocument, nameof(jsonDocument));
 
             Response = response;
-            if (jsonDocument.RootElement.TryGetProperty("err_code", out JsonElement errorCodeElement))
+            if (jsonDocument.RootElement.TryGetProperty("err_code", out JsonElement errorCodeElement) || jsonDocument.RootElement.TryGetProperty("category", out errorCodeElement))
             {
                 ErrorCode = errorCodeElement.GetString();
             }
@@ -45,6 +45,10 @@ namespace DeepgramSharp.Exceptions
             if (jsonDocument.RootElement.TryGetProperty("err_msg", out JsonElement errorMessageElement))
             {
                 ErrorMessage = errorMessageElement.GetString();
+            }
+            else if (jsonDocument.RootElement.TryGetProperty("message", out JsonElement messageElement) && jsonDocument.RootElement.TryGetProperty("details", out JsonElement detailsElement))
+            {
+                ErrorMessage = $"{messageElement.GetString()}\n{detailsElement.GetString()}";
             }
 
             if (jsonDocument.RootElement.TryGetProperty("request_id", out JsonElement requestIdElement))
