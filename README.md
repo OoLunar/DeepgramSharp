@@ -53,7 +53,7 @@ while((response = await livestreamApi.ReceiveTranscriptionAsync()) != null)
 }
 ```
 
-Refer to the [Using the Livestream API](docs/tutorials/live-api.md) tutorial for detailed usage instructions.
+Refer to the [Using the Livestream API](https://www.forsaken-borders.net/DeepgramSharp/tutorials/live-api.md) tutorial for detailed usage instructions.
 
 ### Pre-recorded API
 
@@ -68,11 +68,11 @@ var transcription = await client.SendAudioAsync(audioData, new DeepgramAudioOpti
 });
 ```
 
-Refer to the [Using the Pre-recorded API](docs/tutorials/prerecorded-api.md) tutorial for detailed usage instructions.
+Refer to the [Using the Pre-recorded API](https://www.forsaken-borders.net/DeepgramSharp/tutorials/prerecorded-api.md) tutorial for detailed usage instructions.
 
 ## Examples
 
-Examples can be found in the [examples](examples/) directory. They demonstrate usage of both the Livestream and Pre-recorded APIs.
+Examples can be found in the [examples](https://github.com/OoLunar/DeepgramSharp/tree/master/examples) directory. They demonstrate usage of both the Livestream and Pre-recorded APIs.
 
 ## API Documentation
 

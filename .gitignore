@@ -483,3 +483,4 @@ $RECYCLE.BIN/
 .env
 logs/
 res/config.debug.json
+docs/_site

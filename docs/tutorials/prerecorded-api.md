@@ -4,7 +4,7 @@ The pre-recorded API allows you to transcribe audio files that are stored on the
 
 1. **Initialize the Deepgram Client**
 
-    You'll need to initialize the [`DeepgramClient`]("src/DeepgramClient.cs") with your API key. If desired, you can provide your own custom logger which will be helpful for debugging. By default, all clients use a `NullLogger`. Here's how you can do it:
+    You'll need to initialize the [`DeepgramClient`]("https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramClient.cs") with your API key. If desired, you can provide your own custom logger which will be helpful for debugging. By default, all clients use a `NullLogger`. Here's how you can do it:
 
     ```csharp
     var client = new DeepgramClient("your-api-key", myCustomLogger);
@@ -12,7 +12,7 @@ The pre-recorded API allows you to transcribe audio files that are stored on the
 
 2. **Use the Pre-recorded API**
 
-    Now you can use the [`DeepgramPrerecordedApi`](src/DeepgramPrerecordedApi.cs) class to interact with the pre-recorded API. As with all other API methods, use can pass a cancellation token to the method to cancel the operation. Here's an example of how you can do this:
+    Now you can use the [`DeepgramPrerecordedApi`](https://github.com/OoLunar/DeepgramSharp/blob/master/src/DeepgramPrerecordedApi.cs) class to interact with the pre-recorded API. As with all other API methods, use can pass a cancellation token to the method to cancel the operation. Here's an example of how you can do this:
 
     ```csharp
     var result = await client.PreRecordedApi.TranscribeAsync("url-to-your-audio-file", myCancellationToken);
@@ -40,7 +40,7 @@ The pre-recorded API allows you to transcribe audio files that are stored on the
 
 4. **Handle the Result**
 
-    The `Transcribe` method returns a nullable [`DeepgramTranscription`](src/Entities/DeepgramTranscription.cs) object. The transcription will contain metadata about the model used, the same amount of audio channels as the input data and most importantly, the recorded text. Here's an example of how you can handle the result:
+    The `Transcribe` method returns a nullable [`DeepgramTranscription`](https://github.com/OoLunar/DeepgramSharp/blob/master/Entities/DeepgramTranscription.cs) object. The transcription will contain metadata about the model used, the same amount of audio channels as the input data and most importantly, the recorded text. Here's an example of how you can handle the result:
 
     ```csharp
     if (result is not null)
