@@ -17,7 +17,7 @@ namespace DeepgramSharp.Examples.LiveStreamApi
             {
                 Punctuate = true,
                 Language = CultureInfo.GetCultureInfoByIetfLanguageTag("en-US"),
-                Model = "nova-2"
+                Tier = "nova-2"
             });
 
             HttpClient httpClient = new();

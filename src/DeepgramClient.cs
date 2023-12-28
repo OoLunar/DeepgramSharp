@@ -40,13 +40,13 @@ namespace DeepgramSharp
         /// <param name="apiKey">The API key to use for requests.</param>
         /// <param name="baseUri">The URI to use for requests. Overwrites the default Uri, <see cref="DeepgramRoutes.PrerecordedUri"/>.</param>
         /// <param name="logger">The <see cref="ILogger{TCategoryName}"/> to use for logging.</param>
-        public DeepgramClient(string apiKey, Uri? baseUri = null, ILogger<DeepgramClient>? logger = null)
+        public DeepgramClient(string apiKey, ILogger<DeepgramClient>? logger = null, Uri? baseUri = null)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(apiKey, nameof(apiKey));
             _authenticationHeader = new("Token", apiKey);
             PreRecordedApi = new(this, baseUri);
-            Logger = logger ?? NullLogger<DeepgramClient>.Instance;
             BaseUri = baseUri ?? DeepgramRoutes.PrerecordedUri;
+            Logger = logger ?? NullLogger<DeepgramClient>.Instance;
         }
 
         /// <summary>

@@ -8,14 +8,14 @@ namespace DeepgramSharp.Examples.PrerecordedApi
 {
     public static class Program
     {
-        public static async Task Main(string[] args)
+        public static async Task Main()
         {
             DeepgramClient client = new(Environment.GetEnvironmentVariable("DEEPGRAM_API_KEY")!);
             DeepgramTranscription? transcription = await client.PreRecordedApi.TranscribeAsync(new Uri("https://www2.cs.uic.edu/~i101/SoundFiles/taunt.wav"), new()
             {
                 Punctuate = true,
                 Language = CultureInfo.GetCultureInfoByIetfLanguageTag("en-US"),
-                Model = "nova-2"
+                Tier = "nova-2"
             });
 
             if (transcription is null)
@@ -24,7 +24,7 @@ namespace DeepgramSharp.Examples.PrerecordedApi
                 return;
             }
 
-            Console.WriteLine(transcription.Results.Channels[0].Alternatives[0].Transcript);
+            Console.WriteLine(transcription.Text);
 
             // Take a break, look around a bit.
             Debugger.Break();

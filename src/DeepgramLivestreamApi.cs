@@ -118,6 +118,23 @@ namespace DeepgramSharp
         /// <summary>
         /// Attempts to receive the next transcription from the Deepgram livestream API.
         /// </summary>
+        /// <returns>A <see cref="DeepgramLivestreamResponse"/> containing the transcription.</returns>
+        public DeepgramLivestreamResponse? ReceiveTranscription()
+        {
+            _semaphore.Wait();
+            try
+            {
+                return _transcriptionQueue.TryDequeue(out DeepgramLivestreamResponse? response) ? response : null;
+            }
+            finally
+            {
+                _semaphore.Release();
+            }
+        }
+
+        /// <summary>
+        /// Attempts to receive the next transcription from the Deepgram livestream API.
+        /// </summary>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/> to use for the request.</param>
         /// <returns>A <see cref="ValueTask{TResult}"/> representing the asynchronous operation.</returns>
         public async ValueTask<DeepgramLivestreamResponse?> ReceiveTranscriptionAsync(CancellationToken cancellationToken = default)
@@ -312,6 +329,12 @@ namespace DeepgramSharp
             {
                 if (disposing)
                 {
+                    _semaphore.Wait();
+                    RequestClosureAsync().AsTask().GetAwaiter().GetResult();
+                    _pipe.Writer.Complete();
+                    _pipe.Reader.Complete();
+                    _transcriptionQueue.Clear();
+                    _semaphore.Dispose();
                     WebSocket.Dispose();
                 }
 
