@@ -15,7 +15,7 @@ namespace DeepgramSharp
     /// <summary>
     /// Represents a connection to the Deepgram livestream API.
     /// </summary>
-    public sealed class DeepgramLivestreamApi(DeepgramClient client, Uri? baseUri = null) : IDisposable
+    public sealed class DeepgramLivestreamApi : IDisposable
     {
         private sealed class AuthenticatedMessageInvoker : HttpMessageInvoker
         {
@@ -54,12 +54,12 @@ namespace DeepgramSharp
         /// <summary>
         /// The <see cref="DeepgramClient"/> to use for requests.
         /// </summary>
-        public DeepgramClient Client { get; init; } = client ?? throw new ArgumentNullException(nameof(client));
+        public DeepgramClient Client { get; init; }
 
         /// <summary>
         /// The URI to use for requests.
         /// </summary>
-        public Uri BaseUri { get; init; } = baseUri ?? DeepgramRoutes.LivestreamUri;
+        public Uri BaseUri { get; init; }
 
         /// <summary>
         /// The underlying <see cref="ClientWebSocket"/> used for communication with the Deepgram API.
@@ -76,6 +76,17 @@ namespace DeepgramSharp
         private readonly Pipe _pipe = new();
         private DateTimeOffset _lastKeepAlive = DateTimeOffset.Now;
         private bool _isDisposed;
+
+        /// <summary>
+        /// Creates a new <see cref="DeepgramLivestreamApi"/>.
+        /// </summary>
+        /// <param name="client">The <see cref="DeepgramClient"/> to use for requests.</param>
+        /// <param name="baseUri">The URI to use for requests. Overwrites the default Uri, <see cref="DeepgramRoutes.LivestreamUri"/>.</param>
+        public DeepgramLivestreamApi(DeepgramClient client, Uri? baseUri = null)
+        {
+            Client = client ?? throw new ArgumentNullException(nameof(client));
+            BaseUri = baseUri ?? DeepgramRoutes.LivestreamUri;
+        }
 
         /// <summary>
         /// Connects to the Deepgram livestream API.

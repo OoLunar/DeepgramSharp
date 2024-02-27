@@ -14,21 +14,27 @@ namespace DeepgramSharp
     /// <summary>
     /// Represents the Deepgram prerecorded API.
     /// </summary>
-    /// <param name="client">The <see cref="DeepgramClient"/> to use for requests.</param>
-    /// <param name="baseUri">The URI to use for requests. Overwrites the default Uri, <see cref="DeepgramRoutes.PrerecordedUri"/>.</param>
-    public sealed class DeepgramPreRecordedApi(DeepgramClient client, Uri? baseUri = null)
+    public sealed class DeepgramPreRecordedApi
     {
         private static readonly HttpClient HttpClient = new();
 
         /// <summary>
         /// The URI to use for requests.
         /// </summary>
-        public Uri BaseUri { get; init; } = baseUri ?? DeepgramRoutes.PrerecordedUri;
+        public Uri BaseUri { get; init; }
 
         /// <summary>
         /// The <see cref="DeepgramClient"/> to use for requests.
         /// </summary>
-        public DeepgramClient Client { get; init; } = client ?? throw new ArgumentNullException(nameof(client));
+        public DeepgramClient Client { get; init; }
+
+        /// <param name="client">The <see cref="DeepgramClient"/> to use for requests.</param>
+        /// <param name="baseUri">The URI to use for requests. Overwrites the default Uri, <see cref="DeepgramRoutes.PrerecordedUri"/>.</param>
+        public DeepgramPreRecordedApi(DeepgramClient client, Uri? baseUri = null)
+        {
+            BaseUri = baseUri ?? DeepgramRoutes.PrerecordedUri;
+            Client = client ?? throw new ArgumentNullException(nameof(client));
+        }
 
         /// <summary>
         /// Transcribes the audio from the given stream.
