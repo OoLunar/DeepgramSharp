@@ -10,7 +10,7 @@ namespace DeepgramSharp.Entities
         public required DateTimeOffset Created { get; init; }
         public required double Duration { get; init; }
         public required int Channels { get; init; }
-        public required IReadOnlyList<string> Models { get; init; }
-        public required IReadOnlyDictionary<Guid, DeepgramModelInfo> ModelInfo { get; init; }
+        public IReadOnlyList<string> Models { get; init; } = new List<string>();
+        public IReadOnlyDictionary<Guid, DeepgramModelInfo> ModelInfo { get; init; } = new Dictionary<Guid, DeepgramModelInfo>();
     }
 }
