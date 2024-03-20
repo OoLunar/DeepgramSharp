@@ -19,12 +19,7 @@ namespace DeepgramSharp
         protected readonly Dictionary<string, string> _options = [];
 
         /// <summary>
-        /// AI model/tier used to process submitted audio. Default: <c>general</c>. Learn More: <see href="https://developers.deepgram.com/docs/model" />
-        /// </summary>
-        public string Tier { get => Uri.UnescapeDataString(_options[nameof(Tier)]); set => _options[nameof(Tier)] = Uri.EscapeDataString(value); }
-
-        /// <summary>
-        /// Level of model you would like to use in your request. Default: <c>base</c>. Learn More: <see href="https://developers.deepgram.com/docs/tier" />
+        /// Level of model you would like to use in your request. Default: <c>base</c>. Learn More: <see href="https://developers.deepgram.com/docs/model" />
         /// </summary>
         public string Model { get => Uri.UnescapeDataString(_options[nameof(Model)]); set => _options[nameof(Model)] = Uri.EscapeDataString(value); }
 
