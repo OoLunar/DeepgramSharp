@@ -4,10 +4,12 @@ using System.Collections.Concurrent;
 using System.IO.Pipelines;
 using System.Net.Http;
 using System.Net.WebSockets;
+using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using DeepgramSharp.Entities;
+using DeepgramSharp.Exceptions;
 using Microsoft.Extensions.Logging;
 
 namespace DeepgramSharp
@@ -40,7 +42,7 @@ namespace DeepgramSharp
             }
         }
 
-        private static readonly TimeSpan KeepAliveInterval = TimeSpan.FromSeconds(6);
+        private static readonly TimeSpan KeepAliveInterval = TimeSpan.FromSeconds(3);
         private static readonly byte[] KeepAliveMessage = JsonSerializer.SerializeToUtf8Bytes(new DeepgramWebsocketPayload()
         {
             Type = DeepgramPayloadType.KeepAlive.ToString()
@@ -65,7 +67,6 @@ namespace DeepgramSharp
         /// The underlying <see cref="ClientWebSocket"/> used for communication with the Deepgram API.
         /// </summary>
         public ClientWebSocket WebSocket { get; init; } = new();
-
         /// <summary>
         /// The current state of the <see cref="WebSocket"/>.
         /// </summary>
@@ -122,44 +123,23 @@ namespace DeepgramSharp
                 throw new InvalidOperationException("WebSocket is not open.");
             }
 
-            await WebSocket.SendAsync(audioFrames, WebSocketMessageType.Binary, true, cancellationToken);
-            _lastKeepAlive = DateTimeOffset.UtcNow;
+            await _semaphore.WaitAsync(cancellationToken);
+            try
+            {
+                _lastKeepAlive = DateTimeOffset.UtcNow;
+                await WebSocket.SendAsync(audioFrames, WebSocketMessageType.Binary, WebSocketMessageFlags.EndOfMessage, cancellationToken);
+            }
+            finally
+            {
+                _semaphore.Release();
+            }
         }
 
         /// <summary>
         /// Attempts to receive the next transcription from the Deepgram livestream API.
         /// </summary>
         /// <returns>A <see cref="DeepgramLivestreamResponse"/> containing the transcription.</returns>
-        public DeepgramLivestreamResponse? ReceiveTranscription()
-        {
-            _semaphore.Wait();
-            try
-            {
-                return _transcriptionQueue.TryDequeue(out DeepgramLivestreamResponse? response) ? response : null;
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
-        }
-
-        /// <summary>
-        /// Attempts to receive the next transcription from the Deepgram livestream API.
-        /// </summary>
-        /// <param name="cancellationToken">A <see cref="CancellationToken"/> to use for the request.</param>
-        /// <returns>A <see cref="ValueTask{TResult}"/> representing the asynchronous operation.</returns>
-        public async ValueTask<DeepgramLivestreamResponse?> ReceiveTranscriptionAsync(CancellationToken cancellationToken = default)
-        {
-            await _semaphore.WaitAsync(cancellationToken);
-            try
-            {
-                return _transcriptionQueue.TryDequeue(out DeepgramLivestreamResponse? response) ? response : null;
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
-        }
+        public DeepgramLivestreamResponse? ReceiveTranscription() => _transcriptionQueue.TryDequeue(out DeepgramLivestreamResponse? response) ? response : null;
 
         /// <summary>
         /// Let's the Deepgram livestream API know that you are done sending audio.
@@ -173,14 +153,21 @@ namespace DeepgramSharp
                 throw new InvalidOperationException("WebSocket is already closed.");
             }
 
-            await WebSocket.SendAsync(CloseMessage, WebSocketMessageType.Text, true, cancellationToken);
+            await _semaphore.WaitAsync(cancellationToken);
+            try
+            {
+                await WebSocket.SendAsync(CloseMessage, WebSocketMessageType.Text, true, cancellationToken);
+            }
+            finally
+            {
+                _semaphore.Release();
+            }
         }
 
         private async Task ReceiveTranscriptionLoopAsync()
         {
             while (!_isDisposed && WebSocket.State == WebSocketState.Open)
             {
-                await _semaphore.WaitAsync();
                 try
                 {
                     Memory<byte> memory = _pipe.Writer.GetMemory(8192);
@@ -189,7 +176,8 @@ namespace DeepgramSharp
                     {
                         _transcriptionQueue.Enqueue(new DeepgramLivestreamResponse()
                         {
-                            Type = DeepgramLivestreamResponseType.Closed
+                            Type = DeepgramLivestreamResponseType.Closed,
+                            Error = new DeepgramWebsocketException(WebSocket.CloseStatus.ToString()!, WebSocket.CloseStatusDescription!)
                         });
 
                         break;
@@ -208,6 +196,14 @@ namespace DeepgramSharp
                     await _pipe.Writer.FlushAsync();
                     ParseTranscription();
                 }
+                catch (TaskCanceledException)
+                {
+                    continue;
+                }
+                catch (OperationCanceledException)
+                {
+                    continue;
+                }
                 catch (Exception error)
                 {
                     Client.Logger.LogError(error, "An error occurred while receiving transcription data from the Deepgram API.");
@@ -218,10 +214,6 @@ namespace DeepgramSharp
                     });
 
                     break;
-                }
-                finally
-                {
-                    _semaphore.Release();
                 }
             }
 
@@ -242,66 +234,37 @@ namespace DeepgramSharp
                         reader.Read();
                         if (reader.TokenType != JsonTokenType.String || !Enum.TryParse(reader.GetString(), out type))
                         {
-                            Client.Logger.LogError("Received an unknown message type from the Deepgram API: {JsonDocument}", sequence);
+                            Client.Logger.LogError("Received an unknown message type from the Deepgram API: {JsonDocument}", Encoding.UTF8.GetString(sequence.ToArray()));
                             return;
                         }
 
                         break;
                     }
 
-                    // Fastpath for single segment
-                    if (sequence.IsSingleSegment)
+                    // Restart the reader
+                    reader = new(sequence, false, default);
+                    DeepgramLivestreamResponse response = type switch
                     {
-                        _transcriptionQueue.Enqueue(type switch
+                        DeepgramWebsocketMessageType.Metadata => new DeepgramLivestreamResponse()
                         {
-                            DeepgramWebsocketMessageType.Metadata => new DeepgramLivestreamResponse()
-                            {
-                                Type = DeepgramLivestreamResponseType.Metadata,
-                                Metadata = JsonSerializer.Deserialize<DeepgramMetadata>(sequence.FirstSpan, DeepgramClient.DefaultJsonSerializerOptions)
-                            },
-                            DeepgramWebsocketMessageType.Results => new DeepgramLivestreamResponse()
-                            {
-                                Type = DeepgramLivestreamResponseType.Transcript,
-                                Transcript = JsonSerializer.Deserialize<DeepgramLivestreamResult>(sequence.FirstSpan, DeepgramClient.DefaultJsonSerializerOptions)
-                            },
-                            _ => throw new InvalidOperationException($"Unknown payload type: {type}")
-                        });
-                    }
-                    else if (readResult.IsCompleted)
-                    {
-                        _transcriptionQueue.Enqueue(type switch
+                            Type = DeepgramLivestreamResponseType.Metadata,
+                            Metadata = JsonSerializer.Deserialize<DeepgramMetadata>(ref reader, DeepgramClient.DefaultJsonSerializerOptions)
+                        },
+                        DeepgramWebsocketMessageType.Results => new DeepgramLivestreamResponse()
                         {
-                            DeepgramWebsocketMessageType.Metadata => new DeepgramLivestreamResponse()
-                            {
-                                Type = DeepgramLivestreamResponseType.Metadata,
-                                Metadata = JsonSerializer.Deserialize<DeepgramMetadata>(_pipe.Reader.AsStream(), DeepgramClient.DefaultJsonSerializerOptions)
-                            },
-                            DeepgramWebsocketMessageType.Results => new DeepgramLivestreamResponse()
-                            {
-                                Type = DeepgramLivestreamResponseType.Transcript,
-                                Transcript = JsonSerializer.Deserialize<DeepgramLivestreamResult>(_pipe.Reader.AsStream(), DeepgramClient.DefaultJsonSerializerOptions)
-                            },
-                            _ => throw new InvalidOperationException($"Unknown payload type: {type}")
-                        });
-                    }
-                    else
-                    {
-                        _transcriptionQueue.Enqueue(type switch
-                        {
-                            DeepgramWebsocketMessageType.Metadata => new DeepgramLivestreamResponse()
-                            {
-                                Type = DeepgramLivestreamResponseType.Metadata,
-                                Metadata = JsonSerializer.Deserialize<DeepgramMetadata>(sequence.ToArray(), DeepgramClient.DefaultJsonSerializerOptions)
-                            },
-                            DeepgramWebsocketMessageType.Results => new DeepgramLivestreamResponse()
-                            {
-                                Type = DeepgramLivestreamResponseType.Transcript,
-                                Transcript = JsonSerializer.Deserialize<DeepgramLivestreamResult>(sequence.ToArray(), DeepgramClient.DefaultJsonSerializerOptions)
-                            },
-                            _ => throw new InvalidOperationException($"Unknown payload type: {type}")
-                        });
-                    }
+                            Type = DeepgramLivestreamResponseType.Transcript,
+                            Transcript = JsonSerializer.Deserialize<DeepgramLivestreamResult>(ref reader, DeepgramClient.DefaultJsonSerializerOptions)
+                        },
+                        _ => throw new InvalidOperationException($"Unknown payload type: {type}")
+                    };
 
+                    // Log the data
+                    Client.Logger.LogDebug("Received data from the Deepgram API: {JsonDocument}", response);
+
+                    // Pass the data
+                    _transcriptionQueue.Enqueue(response);
+
+                    // Move the sequence forward to process the next packet
                     _pipe.Reader.AdvanceTo(sequence.End);
                 }
             }
@@ -317,11 +280,12 @@ namespace DeepgramSharp
                 // Everytime audio is sent, the keepalive timer is reset.
                 if (DateTimeOffset.UtcNow - _lastKeepAlive <= KeepAliveInterval)
                 {
+                    _semaphore.Release();
                     continue;
                 }
 
-                await WebSocket.SendAsync(KeepAliveMessage, WebSocketMessageType.Text, true, CancellationToken.None);
                 _lastKeepAlive = DateTimeOffset.UtcNow;
+                await WebSocket.SendAsync(KeepAliveMessage, WebSocketMessageType.Text, true, CancellationToken.None);
                 _semaphore.Release();
             }
         }
