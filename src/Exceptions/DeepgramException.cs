@@ -32,6 +32,12 @@ namespace DeepgramSharp.Exceptions
         /// <inheritdoc/>
         public override string Message => $"Http Error {(int)(Response?.StatusCode ?? 0)}, {ErrorCode}: {ErrorMessage}";
 
+        internal DeepgramException(string errorCode, string errorMessage)
+        {
+            ErrorCode = errorCode;
+            ErrorMessage = errorMessage;
+        }
+
         internal DeepgramException(JsonDocument jsonDocument, HttpResponseMessage? response = null)
         {
             ArgumentNullException.ThrowIfNull(jsonDocument, nameof(jsonDocument));

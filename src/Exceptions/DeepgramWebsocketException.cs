@@ -13,5 +13,6 @@ namespace DeepgramSharp.Exceptions
         /// <param name="jsonDocument">The <see cref="JsonDocument"/> containing the error.</param>
         /// <returns>A new <see cref="DeepgramWebsocketException"/>.</returns>
         internal DeepgramWebsocketException(JsonDocument jsonDocument) : base(jsonDocument) { }
+        internal DeepgramWebsocketException(string errorCode, string errorMessage) : base(errorCode, errorMessage) { }
     }
 }
